@@ -52,7 +52,7 @@ def calculate_specular(light, sreflect, view, normal):
     normalize(view)
     cos = dot_product(normal, light[0])
     r = [2 * normal[0] * cos - light[0][0], 2 * normal[1] * cos - light[0][1], 2 * normal[2] * cos - light[0][2]]
-    cosa = dot_product(r, view)
+    cosa = pow(dot_product(r, view), 8)
     specular.append(light[1][0] * sreflect[0] * cosa)
     specular.append(light[1][1] * sreflect[1] * cosa)
     specular.append(light[1][2] * sreflect[2] * cosa)

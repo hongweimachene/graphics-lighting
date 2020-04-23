@@ -26,7 +26,7 @@ def get_lighting(normal, view, ambient, light, areflect, dreflect, sreflect ):
     d = calculate_diffuse(light, dreflect, normal)
     s = calculate_specular(light, sreflect, view, normal)
     I = [a[0] + d[0] + s[0], a[1] + d[1] + s[1], a[2] + d[2] + s[2]]
-    return list(map(limit_color, list(map(int, I))))
+    return limit_color(list(map(int, I)))
 
 def calculate_ambient(alight, areflect):
     ambient = []
@@ -64,6 +64,7 @@ def limit_color(color):
             color[i] = 0
         if color[i] > 255:
             color[i] = 255
+    return color
 
 
 #vector functions
